@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react"
 import CountUI from "./countUi"
 
-export default function Counter({setSum=()=>{}}) {
+export default function Counter({setSum=()=>{},isReset=false}) {
   const [singleCount,setSingleCount] = useState(0)
   const [reset,setReset] = useState(false)
   useEffect(()=>{
@@ -13,6 +13,9 @@ export default function Counter({setSum=()=>{}}) {
       })
     }
   },[singleCount])
+  useEffect(()=>{
+    setSingleCount(0)
+  },[isReset])
   const handleClick=()=>{
     setReset(false)
     setSingleCount((val)=>{

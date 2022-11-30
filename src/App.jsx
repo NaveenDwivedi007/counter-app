@@ -26,12 +26,13 @@ function App() {
   return (
     <div className="App">
       <p>{count}</p>
-      <CountUI val={count} resetFn={resetHandler}/>
+      <button onClick={resetHandler}>reset</button>
+      {/* <CountUI val={count} resetFn={resetHandler}/> */}
       <br />
       {/* <CountUI /> */}
       <div className="child-counter">
       {empArr.map(val=>{
-        return <Counter key={val} setSum={setCount}/>
+        return <Counter key={val} isReset={reset} setSum={setCount}/>
       })}
       </div>
     </div>
