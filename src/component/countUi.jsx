@@ -1,22 +1,33 @@
 import { useEffect, useState } from "react"
 
-export default function CountUI({val=0,setFn=()=>{}}) {
-  const [currCount,setCurrCount] = useState(0)
-  useEffect(()=>{
-    setFn((preVal)=>{
-      return preVal+1
+export default function CountUI({ val = 0, setFn = () => { } ,resetFn=()=>{}}) {
+  const [currCount, setCurrCount] = useState(0)
+  const [reset,setReset]=useState(false)
+  useEffect(() => {
+    if(reset){
+      resetFn()
+    }else{
+    setFn((preVal) => {
+      return preVal + 1
     })
-  },[currCount])
-  const handleClick=()=>{
-    setCurrCount((curVal)=>{
-      return curVal+1
+  }
+  }, [currCount,reset])
+  const handleClick = () => {
+    setReset(false)
+    setCurrCount((curVal) => {
+      return curVal + 1
     })
+  }
+
+ const  resetHandler = ()=>{
+  setReset(true)
   }
   return (
     <>
-      <button onClick={handleClick} className="count-btn">
-        {val} click
-      </button>
+      <div className="btn-conatiner count-btn">
+        <button onClick={handleClick}>increment</button>
+        <button onClick={resetHandler}> reset</button>
+      </div>
     </>
   )
 }

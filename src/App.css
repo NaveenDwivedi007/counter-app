@@ -5,6 +5,13 @@
   justify-content: center;
   align-items: center;
   flex-direction: column;
+  flex-wrap: wrap;
+}
+.count-wrapper{
+  display: flex;
+  flex-direction: column;
+  background-color: palevioletred;
+
 }
 .child-counter{
   display: flex;
@@ -13,8 +20,8 @@
   gap: 2rem;
   justify-content: center;
 }
-.count-btn{
+/* .count-btn{
   width: 5rem;
   height: 5rem;
   background-color: palevioletred;
-}
+} */
